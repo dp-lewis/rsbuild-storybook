@@ -8,6 +8,13 @@ const config = {
   "framework": {
     "name": "storybook-react-rsbuild",
     "options": {}
+  },
+  "rsbuildFinal": async (config) => {
+    if (process.env.NODE_ENV === 'production') {
+      config.output = config.output || {};
+      config.output.assetPrefix = '/rsbuild-storybook/';
+    }
+    return config;
   }
 };
 export default config;
